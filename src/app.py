@@ -11,7 +11,8 @@ app = Flask(__name__)
 def index():
     content = request.json
     df = pd.DataFrame.from_dict(content)
-    return jsonify(pipe.fit_predict(df))
+    pred=pipe.predict(df)
+    return jsonify(pred.values.tolist())
 
 
 if __name__=='__main__':
